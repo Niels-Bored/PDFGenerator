@@ -89,6 +89,8 @@ function guardarDatos() {
             document.getElementById("plate").innerHTML=plate;   
 
             alert("Plate generated correctly\n\n"+cuenta+" plates generated");
+
+            window.open("https://www.pythonanywhere.com/user/NielsBored/files/home/NielsBored/pdf_generator/files");
         } else if(rawResponse.status ==401){
             alert("Incorrect Password");
         } else{
