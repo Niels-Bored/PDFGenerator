@@ -6,11 +6,6 @@ const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
 const expiracion = new Date(tiempoTranscurrido+(86400000*30));
 
-console.log (localStorage.getItem("cuenta"))
-
-if (isNaN(localStorage.getItem("cuenta"))) {
-    localStorage.setItem ("cuenta", 0)
-}
 
 //var mes = hoy.getMonth()+1;
 var mes = cambiarMes(hoy.getMonth());
@@ -24,6 +19,10 @@ var ano_expiracion = expiracion.getFullYear();
 
 document.getElementById("efective_date").innerHTML="Efective Date: "+mes+" "+dia+", "+ano;
 document.getElementById("expiration_date").innerHTML="To: "+mes_expiracion+" "+dia_expiracion+", "+ano_expiracion;
+
+async function update_storage () {
+    
+}
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -45,7 +44,8 @@ function guardarDatos() {
     var city = document.getElementById("city").value;
     var state = document.getElementById("state").value;
     var zip_code = document.getElementById("zip").value;
-    
+    var api_key = document.getElementById("api_key").value;
+     
     var data = {
         "plate": plate,
         "year": year,
@@ -62,20 +62,10 @@ function guardarDatos() {
         "city": city,
         "state": state,
         "zip_code": zip_code,
-        "api_key": "932fc68172e52db6f95dd88cd9c0311f"
+        "api_key": api_key
     }
+    //932fc68172e52db6f95dd88cd9c0311f
     console.log (data)
-    /*
-    console.log(JSON.stringify(data));
-    fetch('http://nielsbored.pythonanywhere.com/', {
-                method: 'POST',
-                body: JSON.stringify(data), 
-                headers: {
-                    "Content-type": "application/json",
-                    "Access-Control-Allow-Origin": "*"
-                }
-    })
-    */
 
     var requests = (async () => {
         const rawResponse = await fetch('http://nielsbored.pythonanywhere.com/', {
@@ -89,21 +79,29 @@ function guardarDatos() {
         });
       
         console.log(rawResponse);
+        if(rawResponse.status ==200){
+            localStorage.datos = JSON.stringify(data);
+
+            var cuenta = parseInt(localStorage.getItem("cuenta") || 0)+1;
+            localStorage.setItem ("cuenta", cuenta)
+
+            plate = getRandomInt(0,9)+""+getRandomInt(0,9)+""+getRandomInt(0,9)+""+getRandomInt(0,9)+""+getRandomInt(0,9)+""+String.fromCharCode(64 + getRandomInt(1,26))+""+getRandomInt(0,9);
+            document.getElementById("plate").innerHTML=plate;   
+
+            alert("Plate generated correctly\n\n"+cuenta+" plates generated");
+        } else if(rawResponse.status ==401){
+            alert("Incorrect Password");
+        } else{
+            alert("There has been an error");
+        }
       })();
-
-    localStorage.datos = JSON.stringify(data);
-
-    var cuenta = parseInt(localStorage.getItem("cuenta"))+1;
-    localStorage.cuenta=cuenta;
-
-    plate = getRandomInt(0,9)+""+getRandomInt(0,9)+""+getRandomInt(0,9)+""+getRandomInt(0,9)+""+getRandomInt(0,9)+""+String.fromCharCode(64 + getRandomInt(1,26))+""+getRandomInt(0,9);
-    document.getElementById("plate").innerHTML=plate;   
-
-    alert("Plate generated correctly\n\n"+cuenta+" plates generated");
+    
+    
+    
 }
 
-function mostrarCuenta(){
-    var cuenta = parseInt(localStorage.getItem("cuenta"));
+async function mostrarCuenta(){
+    var cuenta = parseInt(localStorage.getItem("cuenta") || 0)
     alert(cuenta+" plates generated until now");
 }
 
