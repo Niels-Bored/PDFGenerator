@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <title>Plates Generator</title>
+</head>
+<body>
+    <form class="formulario">
+        <label class="plate" id="plate"> </label>
+        <br />
+        <br />
+        <label class="etiqueta">Vehicle Year: </label>
+        <input type="text" id="year" name="year"/>
+        <label class="etiqueta">Make: </label>
+        <input type="text" id="make" />
+        <label class="etiqueta">VIN:</label>
+        <input type="text" id="vin" />
+        <label class="etiqueta">Owner:</label>
+        <input type="text" id="owner" />
+        <label class="etiqueta">Model:</label>
+        <input type="text" id="model" />
+        <label class="etiqueta">Body Style:</label>
+        <input type="text" id="body" />
+        <label class="etiqueta">Major Color:</label>
+        <input type="text" id="color" />
+        <label class="etiqueta">Minor Color:</label>
+        <input type="text" id="minor_color" />
+        <label class="etiqueta">Mailing Adress:</label>
+        <input type="text" id="adress" />
+        <label class="etiqueta">City:</label>
+        <input type="text" id="city" />
+        <label class="etiqueta">State:</label>
+        <input type="text" id="state" />
+        <label class="etiqueta">ZIP:</label>
+        <input type="text" id="zip" />
+        <br />
+        <br />
+        <label>Insurance Company: AAAA</label>
+        <br />
+        <br />
+        <label>Dealer: Houston Auto Sales Inc</label>
+        <br />
+        <br />
+        <label>Dearler Number: P112595</label>
+        <br />
+        <br />
+        <label id="efective_date">Efective Date: </label>
+        <br />
+        <br />
+        <label id="expiration_date">To: </label>
+        <br />
+        <br />
+        <input type="button" onclick="guardarDatos()" value="Generate File" />
+        <input type="button" onclick="mostrarCuenta()" value="Consult" />
+    </form>    
+    <script src="/JS/converter.js"></script>
+</body>
+</html>

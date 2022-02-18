@@ -1,0 +1,79 @@
+
+@media (min-width: 768px) {
+  html {
+    font-size: 20px;
+  }
+  body{
+    background-color:darkgreen;
+  }
+  .plate{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    margin-left: 35%;
+  }
+  .formulario{
+    width: 1000px;
+    height: 1000px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 20px black;
+    box-sizing: border-box;
+
+    margin: auto;
+    padding-left: 65px;
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .etiqueta{
+    float: left;
+    width: 200px;
+    margin-bottom: 20px;
+  }
+  input[type="text"]{
+    height: 25px;
+    width: 70%;
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0px 0px 7px black;
+  }
+  input[type="button"]{
+    width: 40%;
+    height: 40px;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: darkolivegreen;
+    color: white;
+    border: none;
+    box-shadow: 0px 0px 5px black;
+    margin-right: 90px;
+  }
+  input[type="button"]:hover{
+    box-shadow: 0px 0px 10px black;
+    background-color:olivedrab;
+    cursor: pointer;
+  }
+}
+@media (max-width: 767px){
+  .formulario{
+      font-family:Arial, Helvetica, sans-serif;
+      display:block;
+  }
+  .plate{
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 60px;
+      margin: auto;
+  }
+  input{
+      width: 100%;
+      margin-bottom: 10px;
+  }
+  html {
+      font-size: 14px;
+  }
+  html {
+      position: relative;
+      min-height: 100%;
+  }
+  body {
+      margin-bottom: 60px;
+  }
+}
