@@ -6,11 +6,11 @@ const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
 const expiracion = new Date(tiempoTranscurrido+(86400000*30));
 
-if(parseInt(localStorage.getItem("cuenta"))!=0){}
-else{
-    localStorage.cuenta=0;
-}
+console.log (localStorage.getItem("cuenta"))
 
+if (isNaN(localStorage.getItem("cuenta"))) {
+    localStorage.setItem ("cuenta", 0)
+}
 
 //var mes = hoy.getMonth()+1;
 var mes = cambiarMes(hoy.getMonth());
